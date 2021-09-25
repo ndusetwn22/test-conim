@@ -1,0 +1,40 @@
+manifest
+  // "short_name": "React App",
+    // "name": "Create React App Sample",
+
+package
+    // "build": "CI=false && react-app-rewired build",
+
+
+import React from "react"
+import { Row, Col, Spinner } from "reactstrap"
+import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb"
+import axios from 'axios';
+import { api_query } from "../../../api/ApiConstant"
+
+
+class OpSsPage extends React.Component {
+  constructor(props){
+      super(props);
+      this.state = {
+
+      }
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+            <Breadcrumbs
+                breadCrumbTitle="SS Operator"
+                breadCrumbParent="SS"
+                breadCrumbActive="SS Operator"
+            />
+        <Row>
+
+        </Row>
+      </React.Fragment>
+    )
+  }
+}
+
+export default OpSsPage
