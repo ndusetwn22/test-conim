@@ -405,9 +405,9 @@ class MstdListSs extends React.Component {
         on dmu.departement_id = dmd.id 
         join df_master_departement dmd2
         on ds.departement_terdampak_id = dmd2.id
-        join df_ss_kategori dsk
+        left join df_ss_kategori dsk
         on dsk.id = ds.ss_kategori_id 
-        join df_ss_kategori_2 dsk2
+        left join df_ss_kategori_2 dsk2
         on dsk2.id = ds.ss_kategori_2_id  
         where
         ss_status_id = `+6+`
