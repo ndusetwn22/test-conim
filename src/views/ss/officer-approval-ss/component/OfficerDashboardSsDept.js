@@ -618,6 +618,7 @@ class OfficerDashboardSsDept extends React.Component {
   }
 
   reRunChart= async()=>{
+    await this.state({isLoading: true})
     await this.tarikSaving();
     await this.tarikCount();
     await this.tarikSavingPS();
@@ -628,6 +629,7 @@ class OfficerDashboardSsDept extends React.Component {
     await this.tarikCountKategori2();
     await this.tarikGarisChart();
     await this.tarikColumnChart();
+    await this.state({isLoading: false})
 
   }
 

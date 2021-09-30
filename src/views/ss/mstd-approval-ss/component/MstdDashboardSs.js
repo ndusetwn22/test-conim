@@ -580,6 +580,7 @@ class MstdDashboardSs extends React.Component {
   }
 
   reRunChart= async()=>{
+    await this.state({isLoading: true})
     await this.tarikSaving();
     await this.tarikCount();
     await this.tarikSavingPS();
@@ -588,6 +589,8 @@ class MstdDashboardSs extends React.Component {
     await this.tarikCountHS();
     await this.tarikCountKategori();
     await this.tarikCountKategori2();
+    await this.state({isLoading: false})
+
   }
 
   isLogin = async(role) =>{
