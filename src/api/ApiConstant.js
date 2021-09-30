@@ -15,7 +15,7 @@ export const project = "prod";
 // export const api_query = process.env.NODE_ENV === 'production' ? 'https://yourapp.herokuapp.com/api' : 'http://localhost:5000/api';
 
 // VERSION
-export const version_app = "v1.3"
+export const version_app = "v1.4"
 
 
 

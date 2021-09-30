@@ -377,7 +377,7 @@ class MstdDashboardSsDept extends React.Component {
 
   tarikGarisChart = async() =>{
     // where closed_date >= '2021-01-01'
-    // and	closed_date < '2021-12-31'
+    // and	closed_date <= '2021-12-31'
 
     let sql = `
         select  coalesce(sum(a.cjan),0) cjan,
@@ -406,30 +406,30 @@ class MstdDashboardSsDept extends React.Component {
                 coalesce(sum(a.ldes), 0) ldes
             from
             (select dss.keuntungan,
-            case when dss.closed_date >= '`+this.state.cYear+`-01-01' and dss.closed_date < '`+this.state.cYear+`-01-31' then dss.keuntungan else 0 end as cjan,
-            case when dss.closed_date >= '`+this.state.cYear+`-02-01' and dss.closed_date < '`+this.state.cYear+`-02-28' then dss.keuntungan else 0 end as cfeb,
-            case when dss.closed_date >= '`+this.state.cYear+`-03-01' and dss.closed_date < '`+this.state.cYear+`-03-31' then dss.keuntungan else 0 end as cmar,
-            case when dss.closed_date >= '`+this.state.cYear+`-04-01' and dss.closed_date < '`+this.state.cYear+`-04-30' then dss.keuntungan else 0 end as capr,
-            case when dss.closed_date >= '`+this.state.cYear+`-05-01' and dss.closed_date < '`+this.state.cYear+`-05-31' then dss.keuntungan else 0 end as cmay,
-            case when dss.closed_date >= '`+this.state.cYear+`-06-01' and dss.closed_date < '`+this.state.cYear+`-06-30' then dss.keuntungan else 0 end as cjun,
-            case when dss.closed_date >= '`+this.state.cYear+`-07-01' and dss.closed_date < '`+this.state.cYear+`-07-31' then dss.keuntungan else 0 end as cjul,
-            case when dss.closed_date >= '`+this.state.cYear+`-08-01' and dss.closed_date < '`+this.state.cYear+`-08-31' then dss.keuntungan else 0 end as caug,
-            case when dss.closed_date >= '`+this.state.cYear+`-09-01' and dss.closed_date < '`+this.state.cYear+`-09-30' then dss.keuntungan else 0 end as csep,
-            case when dss.closed_date >= '`+this.state.cYear+`-10-01' and dss.closed_date < '`+this.state.cYear+`-10-31' then dss.keuntungan else 0 end as coct,
-            case when dss.closed_date >= '`+this.state.cYear+`-11-01' and dss.closed_date < '`+this.state.cYear+`-11-30' then dss.keuntungan else 0 end as cnov,
-            case when dss.closed_date >= '`+this.state.cYear+`-12-01' and dss.closed_date < '`+this.state.cYear+`-12-31' then dss.keuntungan else 0 end as cdes,
-            case when dss.closed_date >= '`+this.state.lYear+`-01-01' and dss.closed_date < '`+this.state.lYear+`-01-31' then dss.keuntungan else 0 end as ljan,
-            case when dss.closed_date >= '`+this.state.lYear+`-02-01' and dss.closed_date < '`+this.state.lYear+`-02-28' then dss.keuntungan else 0 end as lfeb,
-            case when dss.closed_date >= '`+this.state.lYear+`-03-01' and dss.closed_date < '`+this.state.lYear+`-03-31' then dss.keuntungan else 0 end as lmar,
-            case when dss.closed_date >= '`+this.state.lYear+`-04-01' and dss.closed_date < '`+this.state.lYear+`-04-30' then dss.keuntungan else 0 end as lapr,
-            case when dss.closed_date >= '`+this.state.lYear+`-05-01' and dss.closed_date < '`+this.state.lYear+`-05-31' then dss.keuntungan else 0 end as lmay,
-            case when dss.closed_date >= '`+this.state.lYear+`-06-01' and dss.closed_date < '`+this.state.lYear+`-06-30' then dss.keuntungan else 0 end as ljun,
-            case when dss.closed_date >= '`+this.state.lYear+`-07-01' and dss.closed_date < '`+this.state.lYear+`-07-31' then dss.keuntungan else 0 end as ljul,
-            case when dss.closed_date >= '`+this.state.lYear+`-08-01' and dss.closed_date < '`+this.state.lYear+`-08-31' then dss.keuntungan else 0 end as laug,
-            case when dss.closed_date >= '`+this.state.lYear+`-09-01' and dss.closed_date < '`+this.state.lYear+`-09-30' then dss.keuntungan else 0 end as lsep,
-            case when dss.closed_date >= '`+this.state.lYear+`-10-01' and dss.closed_date < '`+this.state.lYear+`-10-31' then dss.keuntungan else 0 end as loct,
-            case when dss.closed_date >= '`+this.state.lYear+`-11-01' and dss.closed_date < '`+this.state.lYear+`-11-30' then dss.keuntungan else 0 end as lnov,
-            case when dss.closed_date >= '`+this.state.lYear+`-12-01' and dss.closed_date < '`+this.state.lYear+`-12-31' then dss.keuntungan else 0 end as ldes
+            case when dss.closed_date >= '`+this.state.cYear+`-01-01' and dss.closed_date <= '`+this.state.cYear+`-01-31' then dss.keuntungan else 0 end as cjan,
+            case when dss.closed_date >= '`+this.state.cYear+`-02-01' and dss.closed_date <= '`+this.state.cYear+`-02-28' then dss.keuntungan else 0 end as cfeb,
+            case when dss.closed_date >= '`+this.state.cYear+`-03-01' and dss.closed_date <= '`+this.state.cYear+`-03-31' then dss.keuntungan else 0 end as cmar,
+            case when dss.closed_date >= '`+this.state.cYear+`-04-01' and dss.closed_date <= '`+this.state.cYear+`-04-30' then dss.keuntungan else 0 end as capr,
+            case when dss.closed_date >= '`+this.state.cYear+`-05-01' and dss.closed_date <= '`+this.state.cYear+`-05-31' then dss.keuntungan else 0 end as cmay,
+            case when dss.closed_date >= '`+this.state.cYear+`-06-01' and dss.closed_date <= '`+this.state.cYear+`-06-30' then dss.keuntungan else 0 end as cjun,
+            case when dss.closed_date >= '`+this.state.cYear+`-07-01' and dss.closed_date <= '`+this.state.cYear+`-07-31' then dss.keuntungan else 0 end as cjul,
+            case when dss.closed_date >= '`+this.state.cYear+`-08-01' and dss.closed_date <= '`+this.state.cYear+`-08-31' then dss.keuntungan else 0 end as caug,
+            case when dss.closed_date >= '`+this.state.cYear+`-09-01' and dss.closed_date <= '`+this.state.cYear+`-09-30' then dss.keuntungan else 0 end as csep,
+            case when dss.closed_date >= '`+this.state.cYear+`-10-01' and dss.closed_date <= '`+this.state.cYear+`-10-31' then dss.keuntungan else 0 end as coct,
+            case when dss.closed_date >= '`+this.state.cYear+`-11-01' and dss.closed_date <= '`+this.state.cYear+`-11-30' then dss.keuntungan else 0 end as cnov,
+            case when dss.closed_date >= '`+this.state.cYear+`-12-01' and dss.closed_date <= '`+this.state.cYear+`-12-31' then dss.keuntungan else 0 end as cdes,
+            case when dss.closed_date >= '`+this.state.lYear+`-01-01' and dss.closed_date <= '`+this.state.lYear+`-01-31' then dss.keuntungan else 0 end as ljan,
+            case when dss.closed_date >= '`+this.state.lYear+`-02-01' and dss.closed_date <= '`+this.state.lYear+`-02-28' then dss.keuntungan else 0 end as lfeb,
+            case when dss.closed_date >= '`+this.state.lYear+`-03-01' and dss.closed_date <= '`+this.state.lYear+`-03-31' then dss.keuntungan else 0 end as lmar,
+            case when dss.closed_date >= '`+this.state.lYear+`-04-01' and dss.closed_date <= '`+this.state.lYear+`-04-30' then dss.keuntungan else 0 end as lapr,
+            case when dss.closed_date >= '`+this.state.lYear+`-05-01' and dss.closed_date <= '`+this.state.lYear+`-05-31' then dss.keuntungan else 0 end as lmay,
+            case when dss.closed_date >= '`+this.state.lYear+`-06-01' and dss.closed_date <= '`+this.state.lYear+`-06-30' then dss.keuntungan else 0 end as ljun,
+            case when dss.closed_date >= '`+this.state.lYear+`-07-01' and dss.closed_date <= '`+this.state.lYear+`-07-31' then dss.keuntungan else 0 end as ljul,
+            case when dss.closed_date >= '`+this.state.lYear+`-08-01' and dss.closed_date <= '`+this.state.lYear+`-08-31' then dss.keuntungan else 0 end as laug,
+            case when dss.closed_date >= '`+this.state.lYear+`-09-01' and dss.closed_date <= '`+this.state.lYear+`-09-30' then dss.keuntungan else 0 end as lsep,
+            case when dss.closed_date >= '`+this.state.lYear+`-10-01' and dss.closed_date <= '`+this.state.lYear+`-10-31' then dss.keuntungan else 0 end as loct,
+            case when dss.closed_date >= '`+this.state.lYear+`-11-01' and dss.closed_date <= '`+this.state.lYear+`-11-30' then dss.keuntungan else 0 end as lnov,
+            case when dss.closed_date >= '`+this.state.lYear+`-12-01' and dss.closed_date <= '`+this.state.lYear+`-12-31' then dss.keuntungan else 0 end as ldes
             from df_suggestion_system dss
             where dss.ss_status_id = 6
             and departement_terdampak_id = `+this.state.deptSelected+`
@@ -484,7 +484,7 @@ class MstdDashboardSsDept extends React.Component {
 
   tarikColumnChart= async() =>{
     // where closed_date >= '2021-01-01'
-    // and	closed_date < '2021-12-31'
+    // and	closed_date <= '2021-12-31'
 
     let sql = `
         select  
@@ -514,30 +514,30 @@ class MstdDashboardSsDept extends React.Component {
               coalesce(sum(a.ldes), 0) ldes
             from
             (select dss.id,
-            case when dss.closed_date >= '`+this.state.cYear+`-01-01' and dss.closed_date < '`+this.state.cYear+`-01-31' then count(dss.id) else null end as cjan,
-            case when dss.closed_date >= '`+this.state.cYear+`-02-01' and dss.closed_date < '`+this.state.cYear+`-02-28' then count(dss.id) else null end as cfeb,
-            case when dss.closed_date >= '`+this.state.cYear+`-03-01' and dss.closed_date < '`+this.state.cYear+`-03-31' then count(dss.id) else null end as cmar,
-            case when dss.closed_date >= '`+this.state.cYear+`-04-01' and dss.closed_date < '`+this.state.cYear+`-04-30' then count(dss.id) else null end as capr,
-            case when dss.closed_date >= '`+this.state.cYear+`-05-01' and dss.closed_date < '`+this.state.cYear+`-05-31' then count(dss.id) else null end as cmay,
-            case when dss.closed_date >= '`+this.state.cYear+`-06-01' and dss.closed_date < '`+this.state.cYear+`-06-30' then count(dss.id) else null end as cjun,
-            case when dss.closed_date >= '`+this.state.cYear+`-07-01' and dss.closed_date < '`+this.state.cYear+`-07-31' then count(dss.id) else null end as cjul,
-            case when dss.closed_date >= '`+this.state.cYear+`-08-01' and dss.closed_date < '`+this.state.cYear+`-08-31' then count(dss.id) else null end as caug,
-            case when dss.closed_date >= '`+this.state.cYear+`-09-01' and dss.closed_date < '`+this.state.cYear+`-09-30' then count(dss.id) else null end as csep,
-            case when dss.closed_date >= '`+this.state.cYear+`-10-01' and dss.closed_date < '`+this.state.cYear+`-10-31' then count(dss.id) else null end as coct,
-            case when dss.closed_date >= '`+this.state.cYear+`-11-01' and dss.closed_date < '`+this.state.cYear+`-11-30' then count(dss.id) else null end as cnov,
-            case when dss.closed_date >= '`+this.state.cYear+`-12-01' and dss.closed_date < '`+this.state.cYear+`-12-31' then count(dss.id) else null end as cdes,
-            case when dss.closed_date >= '`+this.state.lYear+`-01-01' and dss.closed_date < '`+this.state.lYear+`-01-31' then count(dss.id) else null end as ljan,
-            case when dss.closed_date >= '`+this.state.lYear+`-02-01' and dss.closed_date < '`+this.state.lYear+`-02-28' then count(dss.id) else null end as lfeb,
-            case when dss.closed_date >= '`+this.state.lYear+`-03-01' and dss.closed_date < '`+this.state.lYear+`-03-31' then count(dss.id) else null end as lmar,
-            case when dss.closed_date >= '`+this.state.lYear+`-04-01' and dss.closed_date < '`+this.state.lYear+`-04-30' then count(dss.id) else null end as lapr,
-            case when dss.closed_date >= '`+this.state.lYear+`-05-01' and dss.closed_date < '`+this.state.lYear+`-05-31' then count(dss.id) else null end as lmay,
-            case when dss.closed_date >= '`+this.state.lYear+`-06-01' and dss.closed_date < '`+this.state.lYear+`-06-30' then count(dss.id) else null end as ljun,
-            case when dss.closed_date >= '`+this.state.lYear+`-07-01' and dss.closed_date < '`+this.state.lYear+`-07-31' then count(dss.id) else null end as ljul,
-            case when dss.closed_date >= '`+this.state.lYear+`-08-01' and dss.closed_date < '`+this.state.lYear+`-08-31' then count(dss.id) else null end as laug,
-            case when dss.closed_date >= '`+this.state.lYear+`-09-01' and dss.closed_date < '`+this.state.lYear+`-09-30' then count(dss.id) else null end as lsep,
-            case when dss.closed_date >= '`+this.state.lYear+`-10-01' and dss.closed_date < '`+this.state.lYear+`-10-31' then count(dss.id) else null end as loct,
-            case when dss.closed_date >= '`+this.state.lYear+`-11-01' and dss.closed_date < '`+this.state.lYear+`-11-30' then count(dss.id) else null end as lnov,
-            case when dss.closed_date >= '`+this.state.lYear+`-12-01' and dss.closed_date < '`+this.state.lYear+`-12-31' then count(dss.id) else null end as ldes
+            case when dss.closed_date >= '`+this.state.cYear+`-01-01' and dss.closed_date <= '`+this.state.cYear+`-01-31' then count(dss.id) else null end as cjan,
+            case when dss.closed_date >= '`+this.state.cYear+`-02-01' and dss.closed_date <= '`+this.state.cYear+`-02-28' then count(dss.id) else null end as cfeb,
+            case when dss.closed_date >= '`+this.state.cYear+`-03-01' and dss.closed_date <= '`+this.state.cYear+`-03-31' then count(dss.id) else null end as cmar,
+            case when dss.closed_date >= '`+this.state.cYear+`-04-01' and dss.closed_date <= '`+this.state.cYear+`-04-30' then count(dss.id) else null end as capr,
+            case when dss.closed_date >= '`+this.state.cYear+`-05-01' and dss.closed_date <= '`+this.state.cYear+`-05-31' then count(dss.id) else null end as cmay,
+            case when dss.closed_date >= '`+this.state.cYear+`-06-01' and dss.closed_date <= '`+this.state.cYear+`-06-30' then count(dss.id) else null end as cjun,
+            case when dss.closed_date >= '`+this.state.cYear+`-07-01' and dss.closed_date <= '`+this.state.cYear+`-07-31' then count(dss.id) else null end as cjul,
+            case when dss.closed_date >= '`+this.state.cYear+`-08-01' and dss.closed_date <= '`+this.state.cYear+`-08-31' then count(dss.id) else null end as caug,
+            case when dss.closed_date >= '`+this.state.cYear+`-09-01' and dss.closed_date <= '`+this.state.cYear+`-09-30' then count(dss.id) else null end as csep,
+            case when dss.closed_date >= '`+this.state.cYear+`-10-01' and dss.closed_date <= '`+this.state.cYear+`-10-31' then count(dss.id) else null end as coct,
+            case when dss.closed_date >= '`+this.state.cYear+`-11-01' and dss.closed_date <= '`+this.state.cYear+`-11-30' then count(dss.id) else null end as cnov,
+            case when dss.closed_date >= '`+this.state.cYear+`-12-01' and dss.closed_date <= '`+this.state.cYear+`-12-31' then count(dss.id) else null end as cdes,
+            case when dss.closed_date >= '`+this.state.lYear+`-01-01' and dss.closed_date <= '`+this.state.lYear+`-01-31' then count(dss.id) else null end as ljan,
+            case when dss.closed_date >= '`+this.state.lYear+`-02-01' and dss.closed_date <= '`+this.state.lYear+`-02-28' then count(dss.id) else null end as lfeb,
+            case when dss.closed_date >= '`+this.state.lYear+`-03-01' and dss.closed_date <= '`+this.state.lYear+`-03-31' then count(dss.id) else null end as lmar,
+            case when dss.closed_date >= '`+this.state.lYear+`-04-01' and dss.closed_date <= '`+this.state.lYear+`-04-30' then count(dss.id) else null end as lapr,
+            case when dss.closed_date >= '`+this.state.lYear+`-05-01' and dss.closed_date <= '`+this.state.lYear+`-05-31' then count(dss.id) else null end as lmay,
+            case when dss.closed_date >= '`+this.state.lYear+`-06-01' and dss.closed_date <= '`+this.state.lYear+`-06-30' then count(dss.id) else null end as ljun,
+            case when dss.closed_date >= '`+this.state.lYear+`-07-01' and dss.closed_date <= '`+this.state.lYear+`-07-31' then count(dss.id) else null end as ljul,
+            case when dss.closed_date >= '`+this.state.lYear+`-08-01' and dss.closed_date <= '`+this.state.lYear+`-08-31' then count(dss.id) else null end as laug,
+            case when dss.closed_date >= '`+this.state.lYear+`-09-01' and dss.closed_date <= '`+this.state.lYear+`-09-30' then count(dss.id) else null end as lsep,
+            case when dss.closed_date >= '`+this.state.lYear+`-10-01' and dss.closed_date <= '`+this.state.lYear+`-10-31' then count(dss.id) else null end as loct,
+            case when dss.closed_date >= '`+this.state.lYear+`-11-01' and dss.closed_date <= '`+this.state.lYear+`-11-30' then count(dss.id) else null end as lnov,
+            case when dss.closed_date >= '`+this.state.lYear+`-12-01' and dss.closed_date <= '`+this.state.lYear+`-12-31' then count(dss.id) else null end as ldes
             from df_suggestion_system dss
             where dss.ss_status_id = 6
             and departement_terdampak_id = `+this.state.deptSelected+`
@@ -645,13 +645,13 @@ class MstdDashboardSsDept extends React.Component {
 
 tarikSaving = async() =>{
     // where closed_date >= '2021-01-01'
-    // and	closed_date < '2021-12-31'
+    // and	closed_date <= '2021-12-31'
 
     let sql = `
         select coalesce(sum(dss.biaya), 0) biaya, coalesce(sum(dss.keuntungan), 0) keuntungan
         from df_suggestion_system dss 
         where closed_date >= '`+this.state.startDate+`'
-        and	closed_date < '`+this.state.endDate+`'
+        and	closed_date <= '`+this.state.endDate+`'
         and ss_status_id = 6
         and departement_terdampak_id = `+this.state.deptSelected+`
     `
@@ -684,7 +684,7 @@ tarikCount = async() =>{
         select coalesce(count(dss.id), 0) jumlah_done
         from df_suggestion_system dss 
         where closed_date >= '`+this.state.startDate+`'
-        and	closed_date < '`+this.state.endDate+`'
+        and	closed_date <= '`+this.state.endDate+`'
         and ss_status_id = 6
         and departement_terdampak_id = `+this.state.deptSelected+`
     `
@@ -714,13 +714,13 @@ tarikCount = async() =>{
 
 tarikSavingPS = async() =>{
     // where closed_date >= '2021-01-01'
-    // and	closed_date < '2021-12-31'
+    // and	closed_date <= '2021-12-31'
 
     let sql = `
         select coalesce(sum(dss.biaya), 0) biaya, coalesce(sum(dss.keuntungan), 0) keuntungan
         from df_suggestion_system dss 
         where closed_date >= '`+this.state.startDate+`'
-        and	closed_date < '`+this.state.endDate+`'
+        and	closed_date <= '`+this.state.endDate+`'
         and ss_status_id = 6
         and jenis_saving = 'PS'
         and departement_terdampak_id = `+this.state.deptSelected+`
@@ -754,7 +754,7 @@ tarikCountPS = async() =>{
         select coalesce(count(dss.id), 0) jumlah_done
         from df_suggestion_system dss 
         where closed_date >= '`+this.state.startDate+`'
-        and	closed_date < '`+this.state.endDate+`'
+        and	closed_date <= '`+this.state.endDate+`'
         and ss_status_id = 6
         and jenis_saving = 'PS'
         and departement_terdampak_id = `+this.state.deptSelected+`
@@ -785,13 +785,13 @@ tarikCountPS = async() =>{
 
 tarikSavingHS = async() =>{
     // where closed_date >= '2021-01-01'
-    // and	closed_date < '2021-12-31'
+    // and	closed_date <= '2021-12-31'
 
     let sql = `
         select coalesce(sum(dss.biaya), 0) biaya, coalesce(sum(dss.keuntungan), 0) keuntungan
         from df_suggestion_system dss 
         where closed_date >= '`+this.state.startDate+`'
-        and	closed_date < '`+this.state.endDate+`'
+        and	closed_date <= '`+this.state.endDate+`'
         and ss_status_id = 6
         and jenis_saving = 'HS'
         and departement_terdampak_id = `+this.state.deptSelected+`
@@ -825,7 +825,7 @@ tarikCountHS = async() =>{
         select coalesce(count(dss.id), 0) jumlah_done
         from df_suggestion_system dss 
         where closed_date >= '`+this.state.startDate+`'
-        and	closed_date < '`+this.state.endDate+`'
+        and	closed_date <= '`+this.state.endDate+`'
         and ss_status_id = 6
         and jenis_saving = 'HS'
         and departement_terdampak_id = `+this.state.deptSelected+`
@@ -888,7 +888,7 @@ tarikCountKategori = async() =>{
         left join df_ss_kategori dsk
         on dss.ss_kategori_id = dsk.id 
         where dss.closed_date >= '`+this.state.startDate+`'
-        and	dss.closed_date < '`+this.state.endDate+`'
+        and	dss.closed_date <= '`+this.state.endDate+`'
         and dss.ss_status_id = 6
         and departement_terdampak_id = `+this.state.deptSelected+`
         ) a
@@ -965,7 +965,7 @@ tarikCountKategori2 = async() =>{
       left join df_ss_kategori_2 dsk
       on dss.ss_kategori_2_id = dsk.id 
       where dss.closed_date >= '`+this.state.startDate+`'
-      and	dss.closed_date < '`+this.state.endDate+`'
+      and	dss.closed_date <= '`+this.state.endDate+`'
       and dss.ss_status_id = 6
       and departement_terdampak_id = `+this.state.deptSelected+`
       ) a

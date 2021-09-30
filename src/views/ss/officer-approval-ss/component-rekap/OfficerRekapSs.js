@@ -394,7 +394,7 @@ class OfficerRekapSs extends React.Component {
         join df_ss_status dstatus
         on dstatus.id_status = dss.ss_status_id 
         where dss.closed_date >= '`+this.state.cYear+`-01-01' 
-        and dss.closed_date < '`+this.state.cYear+`-12-31'
+        and dss.closed_date <= '`+this.state.cYear+`-12-31'
         and (dss.ss_status_id = 6)  
         and (dss.pengusul_id = `+id+` or dss.pengusul_id_2 = `+id+`)
         order by id
@@ -570,7 +570,7 @@ class OfficerRekapSs extends React.Component {
         select distinct dmu.id, nik, name, departement_id, job_level, 
        		(select coalesce(count(dss.id),0) from df_suggestion_system dss 
        			where dss.closed_date >= '`+this.state.cYear+`-01-01' 
-                and dss.closed_date < '`+this.state.cYear+`-12-31'
+                and dss.closed_date <= '`+this.state.cYear+`-12-31'
                 and (dss.ss_status_id = 6)  
        			and (dss.pengusul_id = dmu.id or dss.pengusul_id_2 = dmu.id)) as done, 
 			(select coalesce(count(dss.id),0) from df_suggestion_system dss 

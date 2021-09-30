@@ -230,7 +230,7 @@ toggleModalFix = async() => {
 
     // Ngecek jika ada cost saving maka lanjut ke FA, jika tidak maka ke MSTD Spv
 
-    if(this.state.ssBiaya == 0 && this.state.ssKeuntungan == 0){
+    if(this.state.ssKeuntungan > 29999999){
         // Tidak ada cost saving gausah kategori 2 
 
           // var sql = `
